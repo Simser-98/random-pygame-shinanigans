@@ -11,6 +11,8 @@ class Object:
         self.vel = vel
         self.func_list = func_list
 
+    # method is for to be applied to all objects
+
     # getter method
     def get_obj_velocity(self):
         return self.vel
@@ -19,8 +21,10 @@ class Object:
         pygame.draw.circle(screen, self.COLOR, self.pos , self.SIZE)
 
 
-        
-def move(object, _dt, _kys):
+# functions are to be applied to only specific objects
+
+
+def velocity_movement(object, _dt, _kys):
 
     # converting velocity to pixel movement
     object.pos = (object.pos[0] + object.vel[0], object.pos[1] + object.vel[1])

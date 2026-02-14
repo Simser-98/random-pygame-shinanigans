@@ -19,7 +19,7 @@ firingRate = 3
 
 
 player = Object(20, "red", pygame.math.Vector2(screen.get_width()/2, screen.get_height()/2),[0,0],
-                       [move_player_obj, move])
+                       [move_player_obj, velocity_movement])
 objectList = [player]
 
 
@@ -41,22 +41,22 @@ def spawn_bullet(ky, t ,object_list):
 
     if ky[pygame.K_LEFT]:
         new_vel = [player.vel[0] - initial_bullet_spd, player.vel[1]]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel,[move])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel,[velocity_movement])
         object_list.append(new_bullet)
         t = 0  # reset timer on key press so timer still runs above firing rate limit
     elif ky[pygame.K_RIGHT]:
         new_vel = [player.vel[0] + initial_bullet_spd, player.vel[1]]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [move])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [velocity_movement])
         object_list.append(new_bullet)
         t = 0
     elif ky[pygame.K_UP]:
         new_vel = [player.vel[0] , player.vel[1] - initial_bullet_spd]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [move])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [velocity_movement])
         object_list.append(new_bullet)
         t = 0
     elif ky[pygame.K_DOWN]:
         new_vel = [player.vel[0], player.vel[1] + initial_bullet_spd]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel, [move])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel, [velocity_movement])
         object_list.append(new_bullet)
         t = 0
 
