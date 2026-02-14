@@ -43,7 +43,6 @@ class Player:
         self.vel[1] = utils.clamp_f(self.vel[1], -max_spd, max_spd)
 
         # converting velocity to pixel movement
-        print(self.vel)
         self.pos = (self.pos[0] + self.vel[0], self.pos[1] + self.vel[1])
 
 
