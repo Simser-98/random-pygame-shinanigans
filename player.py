@@ -19,13 +19,13 @@ class Player:
 
     def move(self, dt, keys):
 
-        acceleration = 25
-        resistance = 0.05
-        max_spd = 3
+        acceleration = 1.5
+        resistance = 3
+        max_spd = 0.5
 
         #velocity dampening
-        self.vel[0] += self.vel[0] * -resistance
-        self.vel[1] += self.vel[1] * -resistance
+        self.vel[0] += self.vel[0] * -resistance * dt
+        self.vel[1] += self.vel[1] * -resistance * dt
 
 
         # changing velocity on input
@@ -43,6 +43,7 @@ class Player:
         self.vel[1] = utils.clamp_f(self.vel[1], -max_spd, max_spd)
 
         # converting velocity to pixel movement
+        print(self.vel)
         self.pos = (self.pos[0] + self.vel[0], self.pos[1] + self.vel[1])
 
 
