@@ -23,40 +23,32 @@ player = Object(20, "red", pygame.math.Vector2(screen.get_width()/2, screen.get_
 objectList = [player]
 
 
-def update_objects(object_list):
 
-    # deletes bullets that are out of bounds of the window
-    for i in range(len(objectList) - 1, -1, -1):
-        if 0 > object_list[i][0] or object_list[i][0] > 1280 or 0 > object_list[i][1] or object_list[i][1] > 720:
-            del object_list[i]
-
-    return object_list
 
 
 
 def spawn_bullet(ky, t ,object_list):
 
-
     initial_bullet_spd = 0.70
 
     if ky[pygame.K_LEFT]:
         new_vel = [player.vel[0] - initial_bullet_spd, player.vel[1]]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel,[velocity_movement])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel,[velocity_movement, update_objects])
         object_list.append(new_bullet)
         t = 0  # reset timer on key press so timer still runs above firing rate limit
     elif ky[pygame.K_RIGHT]:
         new_vel = [player.vel[0] + initial_bullet_spd, player.vel[1]]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [velocity_movement])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [velocity_movement, update_objects])
         object_list.append(new_bullet)
         t = 0
     elif ky[pygame.K_UP]:
         new_vel = [player.vel[0] , player.vel[1] - initial_bullet_spd]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [velocity_movement])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]), new_vel, [velocity_movement, update_objects])
         object_list.append(new_bullet)
         t = 0
     elif ky[pygame.K_DOWN]:
         new_vel = [player.vel[0], player.vel[1] + initial_bullet_spd]
-        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel, [velocity_movement])
+        new_bullet = Object(10, "white", (player.pos[0], player.pos[1]),new_vel, [velocity_movement, update_objects])
         object_list.append(new_bullet)
         t = 0
 
